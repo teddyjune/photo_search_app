@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_search_app/presentation/components/photo_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -51,16 +52,7 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisSpacing: 16,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  padding: const EdgeInsets.all(16.0),
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(16.0)),
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(
-                            'https://pbs.twimg.com/media/Fg3NiqkVIAIf-Jw.jpg'),
-                      )),
-                );
+                return PhotoWidget(photo: photo);
               },
             ),
           ),
