@@ -32,13 +32,36 @@ class _MainScreenState extends State<MainScreen> {
                   borderSide: BorderSide(
                       color: Theme.of(context).colorScheme.primary, width: 2),
                 ),
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    //누르면 동작하는 부분
+                  },
+                  icon: const Icon(Icons.search),
+                ),
                 hintText: '검색어를 입력하세요',
               ),
             ),
           ),
-          GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+          Expanded(
+            child: GridView.builder(
+              itemCount: 10,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 16,
+                mainAxisSpacing: 16,
+              ),
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(16.0)),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(
+                            'https://pbs.twimg.com/media/Fg3NiqkVIAIf-Jw.jpg'),
+                      )),
+                );
+              },
             ),
           ),
         ],
