@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:photo_search_app/presentation/components/photo_widget.dart';
 import 'package:photo_search_app/presentation/main_screen/main_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -57,7 +56,16 @@ class _MainScreenState extends State<MainScreen> {
               ),
               itemBuilder: (BuildContext context, int index) {
                 final photo = viewModel.photos[index];
-                return PhotoWidget(photo: photo);
+                return Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(16.0)),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: NetworkImage(photo.previewURL),
+                      )),
+                );
               },
             ),
           ),
