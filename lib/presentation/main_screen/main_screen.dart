@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'package:photo_search_app/data/data_source/Photo_dto.dart';
+import 'package:photo_search_app/data/data_source/photo_dto.dart';
 import 'package:photo_search_app/presentation/components/photo_widget.dart';
 
 class MainScreen extends StatefulWidget {

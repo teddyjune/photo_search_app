@@ -1,4 +1,4 @@
-import 'Hits.dart';
+import 'hits.dart';
 
 class PhotoDto {
   PhotoDto({
