@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:photo_search_app/presentation/main_screen/main_screen.dart';
+import 'package:photo_search_app/presentation/main_screen/main_view_model.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => MainViewModel()),
+      ],
+      child: const MyApp()));
+  }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

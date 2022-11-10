@@ -7,7 +7,7 @@ class PixabayApi {
   static const baseUrl = 'https://pixabay.com';
   static const apiKey = '10711147-dc41758b93b263957026bdadb';
 
-  Future<PhotoDto> fetchPhoto(String query) async {
+  Future<PhotoDto> getPhotos(String query) async {
     final response = await http
         .get(Uri.parse('$baseUrl/api/?key=$apiKey&q=$query&image_type=photo'));
     Map<String, dynamic> json = jsonDecode(response.body);

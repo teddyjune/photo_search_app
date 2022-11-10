@@ -1,14 +1,10 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-
-import 'package:photo_search_app/data/data_source/photo_dto.dart';
 import 'package:photo_search_app/presentation/components/photo_widget.dart';
+import 'package:photo_search_app/presentation/main_screen/main_view_model.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
-
-
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -25,6 +21,8 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.watch<MainViewModel>();
+
     return Scaffold(
       appBar: AppBar(title: const Text('사진 검색 앱'), centerTitle: true),
       body: Column(
@@ -41,7 +39,7 @@ class _MainScreenState extends State<MainScreen> {
                 ),
                 suffixIcon: IconButton(
                   onPressed: () {
-                    //누르면 동작하는 부분
+                    viewModel.fetchPhotos(controller.text);
                   },
                   icon: const Icon(Icons.search),
                 ),
@@ -51,14 +49,15 @@ class _MainScreenState extends State<MainScreen> {
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: 10,
+              itemCount: viewModel.photos.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: 16,
                 mainAxisSpacing: 16,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return PhotoWidget(photo: );
+                final photo = viewModel.photos[index];
+                return PhotoWidget(photo: photo);
               },
             ),
           ),

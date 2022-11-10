@@ -1,4 +1,3 @@
-import 'package:photo_search_app/data/data_source/Photo_dto.dart';
 import 'package:photo_search_app/data/data_source/pixabay_api.dart';
 import 'package:photo_search_app/data/model/photo.dart';
 
@@ -7,13 +6,13 @@ class PhotoRepository {
 
   PhotoRepository(this._api);
 
-  Future<List<Photo>> fetchPhoto(String query) async {
-    final photoDto = await _api.fetchPhoto(query);
+  Future<List<Photo>> getPhotos(String query) async {
+    final photoDto = await _api.getPhotos(query);
 
-    if ((photoDto.hits?.length ?? 0) == 0) {
+    if (photoDto.hits == null) {
       return [];
     }
-    return PhotoDto.hits!
+    return photoDto.hits!
         .map((e) => Photo(
               previewURL: e.previewURL ?? '',
               tags: e.tags ?? '',
