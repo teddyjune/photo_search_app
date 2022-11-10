@@ -1,8 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+
+import 'package:photo_search_app/data/data_source/Photo_dto.dart';
 import 'package:photo_search_app/presentation/components/photo_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
+
+
 
   @override
   State<MainScreen> createState() => _MainScreenState();
@@ -52,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
                 mainAxisSpacing: 16,
               ),
               itemBuilder: (BuildContext context, int index) {
-                return PhotoWidget(photo: photo);
+                return PhotoWidget(photo: );
               },
             ),
           ),
